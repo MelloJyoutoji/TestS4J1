@@ -1,0 +1,57 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HomePage</title>
+    <style>
+        table {
+            border: 1px solid #ff6a00;
+            border-collapse: collapse;
+        }
+
+            table td {
+                border: 1px solid #ff6a00;
+                border-collapse: collapse;
+            }
+    </style>
+</head>
+<body>
+    <div>
+        <form action="/Home/FindPostData" method="post">
+            <input type="text" name="BookName" /> @Html.DropDownList("seleList", ViewBag.seleList as SelectList, "请选择") <input type="submit" id="find" value="查询" />
+        </form>
+        <hr />
+        <a href="/Home/AddPage">添加</a>
+    </div>
+    <div>
+        <table>
+            <tr align="center">
+                <td>编号</td>
+                <td>名称</td>
+                <td>价格</td>
+                <td>日期</td>
+                <td>类别</td>
+                <td>操作</td>
+            </tr>
+            @{
+                foreach (var bk in Model as List<Model.BookInfo_View>)
+                {
+                    <tr>
+                        <td>@bk.BkId</td>
+                        <td>@bk.BkName</td>
+                        <td>@bk.BkPrice</td>
+                        <td>@bk.BkDate</td>
+                        <td>@bk.TypeName</td>
+                        <td><a href="/Home/EditPage?id=@bk.BkId">修改</a><a href="/Home/Del?id=@bk.BkId">删除</a></td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</body>
+</html>

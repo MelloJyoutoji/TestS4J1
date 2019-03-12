@@ -1,0 +1,25 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditPage</title>
+</head>
+<body>
+    <div align="center">
+        @{ var bk = Model as Model.BookInfo_View;}
+        <form action="/Home/Edit" method="post">
+            <input type="hidden" name="BkID" value="@bk.BkId" />
+            名称:<input type="text" name="BkName" value="@bk.BkName" /> <br />
+            价格:<input type="text" name="BkPrice" value="@bk.BkPrice" /> <br />
+            时间:<input type="date" name="BkDate" value="@bk.BkDate.Value.ToString("yyyy-MM-dd")" /> <br />
+            类别:@Html.DropDownList("BkType", ViewBag.seleList as SelectList) <br />
+            <input type="submit" value="修改" />
+        </form>
+    </div>
+</body>
+</html>

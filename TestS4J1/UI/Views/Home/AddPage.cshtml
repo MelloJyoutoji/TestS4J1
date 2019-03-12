@@ -1,0 +1,23 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddPage</title>
+</head>
+<body>
+    <div align="center">
+        <form action="/Home/Add" method="post">
+            名称:<input type="text" name="BkName" /> <br />
+            价格:<input type="text" name="BkPrice" /> <br />
+            时间:<input type="date" name="BkDate" /> <br />
+            类别:@Html.DropDownList("BkType", ViewBag.seleList as SelectList) <br /> 
+            <input type="submit" value="添加" />
+        </form>
+    </div>
+</body>
+</html>
